@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <style>
+        .big_form{
+                padding: 15px;
+                margin-top: 50px;
+                border-style: solid;
+                border-width: 5px;
+                border-radius: 8px;
+            }
+            .header{
+                margin-left: 220px;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm bg-white">
+            <h1 class='header'>Dojo Survey with Validations!</h1>
+        </nav>
+        <form class='big_form' action='/result' method='post'>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Your Name:</label>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <input type="text" class="form-control" id="exampleFormControlInput1" name='name' value="{{ session['name'] }}">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Dojo Location:</label>
+                <select class="form-control" id="exampleFormControlSelect1" name='dojo_location' value="{{ session['dojo_location'] }}">
+                    <option value="Tulsa">Tulsa</option>
+                    <option value='San_Francisco'>San Francisco</option>
+                    <option value='Dallas'>Dallas</option>
+                    <option value='Chicago'>Chicago</option>
+                    <option value='Seattle'>Seattle</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Favorite Language:</label>
+                <select class="form-control" id="exampleFormControlSelect1" name='favorite_language'>
+                    <option value='Java'>Java</option>
+                    <option value='Javascript'>Javascript</option>
+                    <option value='Python'>Python</option>
+                    <option value='C#'>C#</option>
+                    <option value='Ruby'>Ruby</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Comment (required):</label>
+                <textarea name='comment' class="form-control" id="exampleFormControlTextarea1" rows="3">{{session['comment']}}</textarea>
+            </div>
+            <button type="submit" value='submit' class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

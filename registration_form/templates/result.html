@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style_sheet.css') }}">
+    <title>submitted info</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Thanks for submitting your information!</h1>
+        <p>First Name: {{ first_name }}</p>
+        <p>Last Name: {{ last_name }}</p>
+        <p>Email: {{ email }}</p>
+        <p>Password: {{ password }}</p>
+        <p>Password Confirmation: {{ confirm_password }}</p>
+        <a class='btn btn-secondary' href="/">Go back</a>
+    </div>
+</body>
+</html>
